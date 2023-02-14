@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: rank_list_builder_production
-  username: rank_list_builder
-  password: <%= ENV["RANK_LIST_BUILDER_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
