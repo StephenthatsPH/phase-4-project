@@ -46,7 +46,7 @@ class ProgramsController < ApplicationController
     private
 
     def find_program
-        program.find(params[:id])
+        programs.find(params[:id])
     end
 
 

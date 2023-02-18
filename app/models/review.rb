@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-    # belongs_to :user, dependent: :destroy
+    belongs_to :user, dependent: :destroy
     belongs_to :program
     
     validates :post, presence: true

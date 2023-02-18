@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
 
     # GET /reviews
     def index
-        review = Review.all.order(rating: :asc)
+        reviews = Review.all
         render json: reviews, include: :program
     end
 

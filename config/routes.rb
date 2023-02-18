@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   resources :users
   resources :reviews
-  resources :programs, except: [:edit, :new]
-  resources :reviews, only: [:index, :post, :patch, :delete]
+  resources :programs
+  # resources :programs, except: [:edit, :new]
+  # resources :reviews, only: [:index, :post, :patch, :delete]
   # route to test your configuration
   get '/hello', to: 'application#hello_world'
   
-  get '*path',
-  to: 'fallback#index',
+  get '*path',to: 'fallback#index',
   constraints: ->(req) { !req.xhr? && req.format.html? }
 end
 
