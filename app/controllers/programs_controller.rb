@@ -4,12 +4,12 @@ class ProgramsController < ApplicationController
     # GET /programs
     def index 
         programs = Program.all
-        render json: programs, # include: :reviews
+        render json: programs, include: :reviews
     end
 
     # POST /programs
     def create 
-        program = Program.create(program_params)
+        program = Program.create!(program_params)
         render json: program, status: :created
     end
 
@@ -17,7 +17,7 @@ class ProgramsController < ApplicationController
     def show 
         program = find_program
         if program
-            render json: program, # include: :reviews
+            render json: program, include: :reviews
         else
             render json: { error: "Program not found" }, status: :not_found
         end
@@ -26,7 +26,7 @@ class ProgramsController < ApplicationController
     # PATCH /programs/:id
     def update 
         program = find_program
-        program.update(program_params)
+        program.update!(program_params)
         render json: program, except: [:created_at, :updated_at]
     end
 
