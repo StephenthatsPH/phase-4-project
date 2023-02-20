@@ -1,53 +1,22 @@
 import React, { useState } from 'react';
+import SignupForm from './SignupForm';
+import LoginForm from './LoginForm';
 
-function SignupForm() {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        confirm_password: ''
-    });
+function AuthPage() {
+    const [isSignup, setIsSignup] = useState(true);
 
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value
-        });
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        fetch('/api/signup', {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+    const handleToggleForm = () => {
+        setIsSignup(!isSignup);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Email:
-                <input type="email" name="email" value={formData.email} onChange={handleChange} />
-            </label>
-            <label>
-                Password:
-                <input type="password" name="password" value={formData.password} onChange={handleChange} />
-            </label>
-            <label>
-                Confirm Password:
-                <input type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} />
-            </label>
-            <button type="submit">Sign Up</button>
-        </form>
+        <div>
+            {isSignup ? <SignupForm /> : <LoginForm />}
+            <button onClick={handleToggleForm}>
+                {isSignup ? 'Already have an account? Log in' : 'Need to create an account? Sign up'}
+            </button>
+        </div>
     );
 }
 
-export default SignupForm;
+export default AuthPage;
