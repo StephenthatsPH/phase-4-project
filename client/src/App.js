@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import AuthPage from "./components/AuthPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,6 +15,9 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
+          <Route path="/login">
+            <AuthPage />
+          </Route>
           <Route path="/testing">
             <h1>Test Route</h1>
           </Route>

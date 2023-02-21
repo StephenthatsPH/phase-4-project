@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # resources :reviews, only: [:index, :post, :patch, :delete]
   # route to test your configuration
   get '/hello', to: 'application#hello_world'
+  post '/signup', to: 'users#create'
+  post '/login', to: 'sessions#create'
   
   get '*path',to: 'fallback#index',
   constraints: ->(req) { !req.xhr? && req.format.html? }

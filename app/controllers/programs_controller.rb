@@ -46,13 +46,13 @@ class ProgramsController < ApplicationController
     private
 
     def find_program
-        programs.find(params[:id])
+        Program.find(params[:id])
     end
 
 
     # Strong params (permit only these attributes) for mass assignment protection
     def program_params 
-        params.permit(:name, :hospital, :website, :specialty, :pgy1salary, :program_size, :program_age, :state, :city, :area_type)
+        params.permit(:id, :name, :hospital, :website, :specialty, :pgy1salary, :program_size, :program_age, :state, :city, :area_type)
     end
 
     def render_not_found_response 

@@ -15,19 +15,27 @@ function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch('/api/login', {
+        fetch('/login', {
             method: 'POST',
-            body: JSON.stringify(formData),
+            body: JSON.stringify({ user: formData }),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
             .then((response) => {
-                console.log(response);
-                // Do something with response, such as redirect to dashboard
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Login failed');
+                }
+            })
+            .then((data) => {
+                console.log('Logged in as:', data.user);
+                // TODO: handle successful login
             })
             .catch((error) => {
-                console.error(error);
+                console.error('Error logging in:', error);
+                // TODO: display error message to user
             });
     };
 
@@ -37,10 +45,12 @@ function LoginForm() {
                 Email:
                 <input type="email" name="email" value={formData.email} onChange={handleChange} />
             </label>
+            <br />
             <label>
                 Password:
                 <input type="password" name="password" value={formData.password} onChange={handleChange} />
             </label>
+            <br />
             <button type="submit">Log In</button>
         </form>
     );
