@@ -37,13 +37,13 @@ class ReviewsController < ApplicationController
     private
 
     def find_review
-        review.find(params[:id])
+        Review.find(params[:id])
     end
 
 
     # Strong params (permit only these attributes) for mass assignment protection
     def review_params
-        params.permit(:post, :rating)
+        params.permit(:text, :rating, :program_id, :user_id)
     end
 
     def render_not_found_response
