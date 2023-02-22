@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AuthPage from "./components/UserAuth/AuthPage";
-import Home from "./components/Home";
-import ProgramsList from "./components/ProgramsList";
-import UserPrograms from "./components/UserPrograms";
+import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Header";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [programs, setPrograms] = useState([]);
+
+  // useEffect(() => {
+  //     fetch('/programs')
+  //       .then((res) => res.json())
+  //       .then(data => {
+  //         console.log(data);
+  //         setPrograms(data);
+  //       })
+  // }, []);
 
   return (
     <Router>

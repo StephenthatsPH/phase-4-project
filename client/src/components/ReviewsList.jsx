@@ -1,6 +1,7 @@
 import React from "react";
 
-function ReviewList(){
+function ReviewsList(){
+
     return(
         <div>
             <h2>Review List</h2>
@@ -8,4 +9,4 @@ function ReviewList(){
     )
 }
 
-export default ReviewList;
+export default ReviewsList;

@@ -2,43 +2,43 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch, NavLink } from "react-router-dom";
 import AuthPage from "./UserAuth/AuthPage";
 import Home from "./Home";
-import ProgramsList from "./ProgramsList";
 import UserPrograms from "./UserPrograms";
+import ProgramsPage from "./ProgramsPage";
 
 function Header() {
-    const [count, setCount] = useState(0);
+    // const [count, setCount] = useState(0);
 
-    useEffect(() => {
-        fetch("/hello")
-            .then((r) => r.json())
-            .then((data) => setCount(data.count));
-    }, []);
+    // useEffect(() => {
+    //     fetch("/hello")
+    //         .then((r) => r.json())
+    //         .then((data) => setCount(data.count));
+    // }, []);
 
     return (
         <>
             <header className="App-header">
                 <nav className="navbar">
                     <h1>Rank List Builder</h1>
-                    <NavLink to="/login">Login</NavLink>
-                    <NavLink to="/home"> Home</NavLink>
-                    <NavLink to="/programslist"> Programs</NavLink>
-                    <NavLink to="/userprograms"> User's Programs</NavLink>
+                    <NavLink to="/home">Home</NavLink>
+                    <NavLink to="/programs"> Programs</NavLink>
+                    <NavLink to="/user/programs"> User's Programs</NavLink>
+                    <NavLink to="/login"> Login</NavLink>
                     <Switch>
-                        <Route path="/login">
-                            <AuthPage />
-                        </Route>
                         <Route path="/home">
                             <Home />
                         </Route>
                         <Route exact path="/programs">
-                            <ProgramsList />
+                            <ProgramsPage />
                         </Route>
-                        <Route path="/programs/user">
+                        <Route path="/user/programs">
                             <UserPrograms />
                         </Route>
-                        <Route exact path="/">
-                            <h1>Page Count: {count}</h1>
+                        <Route path="/login">
+                            <AuthPage />
                         </Route>
+                        {/* <Route exact path="/">
+                            <h1>Page Count: {count}</h1>
+                        </Route> */}
                     </Switch>
                 </nav>
             </header>
