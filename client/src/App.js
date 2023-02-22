@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import AuthPage from "./components/AuthPage";
+import AuthPage from "./components/UserAuth/AuthPage";
+import Home from "./components/Home";
+import ProgramsList from "./components/ProgramsList";
+import UserPrograms from "./components/UserPrograms";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,10 +21,16 @@ function App() {
           <Route path="/login">
             <AuthPage />
           </Route>
-          <Route path="/testing">
-            <h1>Test Route</h1>
+          <Route path="/home">
+            <Home />
           </Route>
-          <Route path="/">
+          <Route exact path="/programs">
+            <ProgramsList />
+          </Route>
+          <Route path="/programs/user">
+            <UserPrograms />
+          </Route>
+          <Route exact path="/">
             <h1>Page Count: {count}</h1>
           </Route>
         </Switch>

@@ -3,9 +3,9 @@ class ReviewsController < ApplicationController
 
 
     # GET /reviews
-    def index
+    def index 
         reviews = Review.all
-        render json: reviews, include: :program
+        render json: reviews, include: :programs
     end
 
     # POST /reviews
@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
 
     # Strong params (permit only these attributes) for mass assignment protection
     def review_params
-        params.permit(:text, :rating, :program_id, :user_id)
+        params.permit(:id, :text, :rating, :program_id, :user_id)
     end
 
     def render_not_found_response

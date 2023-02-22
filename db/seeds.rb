@@ -15,6 +15,7 @@ Program.create(id: 3, name: "Lincoln Emergency Medicine", hospital: "Lincoln Hos
 Review.create(id: 1, text: "This hospital is awesome and I love it so much. I had a great time here when I rotated here and the interview went well. I think the program director likes me a bunch. The interview was laid back.", rating: 5, program_id: 1,user_id: 1)
 Review.create(id: 2, text: "I didn't rotate at this hospital, and my interview is tomorrow. I will give this one a neutral rating, because I'm not sure how I feel about it yet", rating: 3, program_id: 3, user_id: 1)
 Review.create(id: 3, text: "The hospital looks great and the interview went very well. There are a few things I like about this hospital because of its location. I would recommend this to some of my juniors.", rating: 2, program_id: 2, user_id: 1)
+Review.create(id: 4, text: "I'm not sure how I feel about it, but I'm not sure how I feel about it. I'm not sure how I feel about", rating: 3, program_id: 3)
 
 User.create(id: 1, email: "test@test.com", password: "password", password_confirmation: "password")
 
