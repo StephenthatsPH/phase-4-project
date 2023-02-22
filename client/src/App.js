@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Header";
+import AuthPage from "./components/UserAuth/AuthPage";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [programs, setPrograms] = useState([]);
 
-  // useEffect(() => {
-  //     fetch('/programs')
-  //       .then((res) => res.json())
-  //       .then(data => {
-  //         console.log(data);
-  //         setPrograms(data);
-  //       })
-  // }, []);
+  useEffect(() => {
+      fetch('/me').then((res) => {
+        if (res.ok) {
+          res.json().then((user) => setUser(user));
+        }
+      })
+  }, []);
 
+  if (user) {
   return (
     <Router>
       <div className="App">
@@ -22,6 +22,9 @@ function App() {
       </div>
     </Router>
   );
+  } else {
+    return <AuthPage onLogin={setUser} />;
+  }
 }
 
 export default App;

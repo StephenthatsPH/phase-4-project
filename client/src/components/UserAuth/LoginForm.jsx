@@ -1,42 +1,29 @@
 import React, { useState } from 'react';
 
-function LoginForm() {
+function LoginForm({ onLogin }) {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ formData })
+        })
+        .then(res => res.json())
+        .then((formData) => onLogin(formData))
+    }
 
     const handleChange = (event) => {
         setFormData({
             ...formData,
             [event.target.name]: event.target.value
         });
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        fetch('/login', {
-            method: 'POST',
-            body: JSON.stringify({ user: formData }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Login failed');
-                }
-            })
-            .then((data) => {
-                console.log('Logged in as:', data.user);
-                // TODO: handle successful login
-            })
-            .catch((error) => {
-                console.error('Error logging in:', error);
-                // TODO: display error message to user
-            });
     };
 
     return (

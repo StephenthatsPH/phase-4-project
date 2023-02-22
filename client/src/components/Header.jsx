@@ -22,7 +22,6 @@ function Header() {
                     <NavLink to="/home">Home</NavLink>
                     <NavLink to="/programs"> Programs</NavLink>
                     <NavLink to="/user/programs"> User's Programs</NavLink>
-                    <NavLink to="/login"> Login</NavLink>
                     <Switch>
                         <Route path="/home">
                             <Home />
@@ -33,12 +32,6 @@ function Header() {
                         <Route path="/user/programs">
                             <UserPrograms />
                         </Route>
-                        <Route path="/login">
-                            <AuthPage />
-                        </Route>
-                        {/* <Route exact path="/">
-                            <h1>Page Count: {count}</h1>
-                        </Route> */}
                     </Switch>
                 </nav>
             </header>

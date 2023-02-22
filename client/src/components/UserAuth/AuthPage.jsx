@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
-function AuthPage() {
+function AuthPage({ onLogin }) {
     const [isSignup, setIsSignup] = useState(true);
 
     const handleToggleForm = () => {
@@ -11,7 +11,7 @@ function AuthPage() {
 
     return (
         <div>
-            {isSignup ? <SignupForm /> : <LoginForm />}
+            {isSignup ? <SignupForm /> : <LoginForm onLogin={onLogin}/>}
             <button onClick={handleToggleForm}>
                 {isSignup ? 'Already have an account? Log in' : 'Need to create an account? Sign up'}
             </button>
