@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, NavLink } from "react-router-dom";
-import AuthPage from "./UserAuth/AuthPage";
 import Home from "./Home";
 import UserPrograms from "./UserPrograms";
 import ProgramsPage from "./ProgramsPage";
 
-function Header() {
+function Header({ onLogout }) {
+    function handleLogout() {
+        fetch('/logout', {
+            method: 'DELETE',
+        }).then(() => onLogout());
+    }
     // const [count, setCount] = useState(0);
 
     // useEffect(() => {
@@ -22,6 +26,7 @@ function Header() {
                     <NavLink to="/home">Home</NavLink>
                     <NavLink to="/programs"> Programs</NavLink>
                     <NavLink to="/user/programs"> User's Programs</NavLink>
+                    <button onClick={handleLogout}>Logout</button>
                     <Switch>
                         <Route path="/home">
                             <Home />

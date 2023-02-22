@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header onLogout={setUser}/>
       </div>
     </Router>
   );
