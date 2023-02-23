@@ -3,7 +3,7 @@ import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 function AuthPage({ onLogin }) {
-    const [isSignup, setIsSignup] = useState(true);
+    const [isSignup, setIsSignup] = useState(false);
 
     const handleToggleForm = () => {
         setIsSignup(!isSignup);

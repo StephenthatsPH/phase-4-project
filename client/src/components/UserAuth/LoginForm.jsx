@@ -6,12 +6,16 @@ function LoginForm({ onLogin }) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        const user = {
+            email: email,
+            password: password
+        }
         fetch('/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify( user )
         })
         .then(res => res.json())
         .then((user) => onLogin(user))
