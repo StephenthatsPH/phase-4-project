@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
 
     # POST /reviews
     def create
-        review = Review.create(review_params)
+        review = Review.create!(review_params)
         render json: review, status: :created
     end
 
