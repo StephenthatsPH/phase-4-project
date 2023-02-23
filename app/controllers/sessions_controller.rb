@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    skip_before_action :authorize, only: create
 
     def create
         user = User.find_by(email: params[:email])
@@ -7,7 +8,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :ok
         else
-            render json: { errors: "Invalid email or password" }, status: :unprocessable_entity
+            render json: { errors: ["Invalid email or password"] }, status: :unauthorized
         end
     end
 

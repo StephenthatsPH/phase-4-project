@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :reviews
-    resources :programs
-    # resources :users
-    # resources :programs, except: [:edit, :new]
-    # resources :reviews, only: [:index, :post, :patch, :delete]
-    # route to test your configuration
-    get '/hello', to: 'application#hello_world'
-    post '/signup', to: 'users#create'
-    post '/login', to: 'sessions#create'
-    delete '/logout', to: 'sessions#destroy'
-    get '/me', to: 'users#show'
+  resources :reviews
+  resources :programs
+  get '/hello', to: 'application#hello_world'
+  post '/signup', to: 'users#create'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/me', to: 'users#show'
   end
   
   get '*path',to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }

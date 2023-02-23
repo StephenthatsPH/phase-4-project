@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 
 function LoginForm({ onLogin }) {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -13,29 +11,22 @@ function LoginForm({ onLogin }) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ formData })
+            body: JSON.stringify({ email, password })
         })
         .then(res => res.json())
-        .then((formData) => onLogin(formData))
+        .then((user) => onLogin(user))
     }
-
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value
-        });
-    };
 
     return (
         <form onSubmit={handleSubmit}>
             <label>
                 Email:
-                <input type="email" name="email" value={formData.email} onChange={handleChange} />
+                <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
             <br />
             <label>
                 Password:
-                <input type="password" name="password" value={formData.password} onChange={handleChange} />
+                <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </label>
             <br />
             <button type="submit">Log In</button>

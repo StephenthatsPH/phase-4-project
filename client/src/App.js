@@ -7,14 +7,15 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-      fetch('/me').then((res) => {
-        if (res.ok) {
-          res.json().then((user) => setUser(user));
+      fetch('/me').then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
         }
       })
   }, []);
 
-  if (user) {
+  if (!user) return <AuthPage onLogin={setUser} />
+  
   return (
     <Router>
       <div className="App">
@@ -22,9 +23,6 @@ function App() {
       </div>
     </Router>
   );
-  } else {
-    return <AuthPage onLogin={setUser} />;
-  }
 }
 
 export default App;
