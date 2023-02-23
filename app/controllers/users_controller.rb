@@ -13,9 +13,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        def show
-            render json: @current_user
-        end
+            render json: current_user
     end
     
 
