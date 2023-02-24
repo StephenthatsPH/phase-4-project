@@ -10,17 +10,19 @@ function SignupForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const user = {
-            first_name: first_name,
-            last_name: last_name,
-            phone_number: phone_number,
-            email: email,
-            password: password,
-            password_confirmation: password_confirmation
+        const strongParams = {
+            user: {
+                first_name: first_name,
+                last_name: last_name,
+                phone_number: phone_number,
+                email: email,
+                password: password,
+                password_confirmation: password_confirmation
+            }
         }
         fetch('/signup', {
             method: 'POST',
-            body: JSON.stringify( user ),
+            body: JSON.stringify(strongParams),
             headers: {
                 'Content-Type': 'application/json'
             }

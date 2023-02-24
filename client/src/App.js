@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header onLogout={setUser}/>
+        <Header setUser={setUser}/>
       </div>
     </Router>
   );

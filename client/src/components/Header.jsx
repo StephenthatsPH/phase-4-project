@@ -3,39 +3,42 @@ import { Route, Switch, NavLink } from "react-router-dom";
 import Home from "./Home";
 import UserPrograms from "./UserPrograms";
 import ProgramsPage from "./ProgramsPage";
+import UserSettings from "./UserAuth/UserSettings";
 
-function Header({ onLogout }) {
+function Header({ setUser }) {
+    
+    
+    
+
+
     function handleLogout() {
-        fetch('/logout', {
-            method: 'DELETE',
-        }).then(() => onLogout());
+        fetch('/logout', {method: 'DELETE',}).then((r) => {
+            if(r.ok) setUser(null);
+        });
     }
-    // const [count, setCount] = useState(0);
-
-    // useEffect(() => {
-    //     fetch("/hello")
-    //         .then((r) => r.json())
-    //         .then((data) => setCount(data.count));
-    // }, []);
 
     return (
         <>
             <header className="App-header">
                 <nav className="navbar">
                     <h1>Rank List Builder</h1>
-                    <NavLink to="/home">Home</NavLink>
+                    <NavLink to="/">Home</NavLink>
                     <NavLink to="/programs"> Programs</NavLink>
                     <NavLink to="/user/programs"> User's Programs</NavLink>
+                    <NavLink to="/user/account"> Account</NavLink>
                     <button onClick={handleLogout}>Logout</button>
                     <Switch>
-                        <Route path="/home">
-                            <Home />
-                        </Route>
                         <Route exact path="/programs">
                             <ProgramsPage />
                         </Route>
                         <Route path="/user/programs">
                             <UserPrograms />
+                        </Route>                       
+                        <Route path="/user/account">
+                            <UserSettings />
+                        </Route>
+                        <Route exact path="/">
+                            <Home />
                         </Route>
                     </Switch>
                 </nav>

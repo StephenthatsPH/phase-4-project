@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ProgramsList from "./ProgramsList";
-import NewProgramForm from "./NewProgramForm";
+import ProgramsList from "./Programs/ProgramsList";
+import NewProgramForm from "./Programs/NewProgramForm";
 
 function ProgramsPage(){
     const [isNewProgram, setIsNewProgram] = useState(true);
