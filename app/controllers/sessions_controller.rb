@@ -3,12 +3,15 @@ class SessionsController < ApplicationController
 
     def create
         user = User.find_by(email: params[:email])
+        puts user
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
+            puts session[:user_id]
             render json: user, status: :created
         else
             render json: { error: "Invalid email or password" }, status: :unauthorized
         end  
+        
     end
 
     def destroy
