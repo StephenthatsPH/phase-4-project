@@ -28,7 +28,7 @@ function NewProgramForm({ onAddProgram }) {
                 area_type: area_type
             }
         }
-        fetch('/newprogram', {
+        fetch('/programs', {
             method: 'POST',
             body: JSON.stringify(strongParams),
             headers: {
