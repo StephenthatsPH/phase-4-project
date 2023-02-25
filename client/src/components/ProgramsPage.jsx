@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProgramsList from "./Programs/ProgramsList";
 import NewProgramForm from "./Programs/NewProgramForm";
 
-function ProgramsPage(){
+function ProgramsPage({ onAddProgram }){
     const [isNewProgram, setIsNewProgram] = useState(true);
 
     const handleToggleForm = () => {
@@ -14,7 +14,7 @@ function ProgramsPage(){
             <button onClick={handleToggleForm}>
                 {isNewProgram ? 'Click here to add a program.' : 'Click to list all programs.'}
             </button>
-            {isNewProgram ? <ProgramsList /> : <NewProgramForm />}
+            {isNewProgram ? <ProgramsList /> : <NewProgramForm onAddProgram={onAddProgram} />}
         </div>
     );
 }

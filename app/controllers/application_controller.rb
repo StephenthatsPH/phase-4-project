@@ -17,6 +17,6 @@ class ApplicationController < ActionController::API
     end
     
     def handle_invaild
-        render json: { errors: exception.record.errors.full_messages }, status: 422
+        render json: { errors: exceptions.record.errors.full_messages }, status: 422
     end
 end
