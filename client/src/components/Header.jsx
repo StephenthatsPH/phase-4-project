@@ -4,9 +4,11 @@ import Home from "./Home";
 import UserPrograms from "./UserPrograms";
 import ProgramsPage from "./ProgramsPage";
 import ReviewsList from "./ReviewsList";
+import NewReviewForm from "./NewReviewForm";
 import UserSettings from "./UserAuth/UserSettings";
+import ProgramCard from "./ProgramCard";
 
-function Header({ handleLogout, setUser }) {
+function Header({ handleLogout, setUser, currentUser }) {
     const [programs, setPrograms] = useState([]);
 
     useEffect(() => {
@@ -23,11 +25,8 @@ function Header({ handleLogout, setUser }) {
         setPrograms([...programs, { ...newProgram, reviews: [] }])
     }
 
-    function handleReview(newReview) {
-        console.log(newReview)
-        console.log(programs)
+    function handleReviewNew(newReview) {
         const program = programs.find((program) => program.id == newReview.program_id)
-        console.log(program)
         const updatedReviews = [...program.reviews, newReview]
         const updatedProgram = { ...program, reviews: updatedReviews }
         const updatedPrograms = programs.map((obj) => {
@@ -96,7 +95,13 @@ function Header({ handleLogout, setUser }) {
                     <button onClick={handleLogout}>Logout</button>
                     <Switch>
                         <Route exact path="/programs">
-                            <ProgramsPage programs={programs} onAddProgram={handleNewProgram} onReviewDelete={handleDeletedReview} onReviewEdit={handleEditedReview} />
+                            <ProgramsPage 
+                                programs={programs} 
+                                onAddProgram={handleNewProgram} 
+                                onReviewDelete={handleDeletedReview} 
+                                onReviewEdit={handleEditedReview} 
+                                />
+                                {/* <NewReviewForm onReviewNew={handleReviewNew} /> */}
                         </Route>
                         <Route path="/user/programs">
                             <UserPrograms />
@@ -105,6 +110,8 @@ function Header({ handleLogout, setUser }) {
                             <UserSettings />
                         </Route>
                         <Route exact path="/programs/:id/overview">
+                            <ProgramCard />
+                            <NewReviewForm onReviewNew={handleReviewNew} currentUser={currentUser} />
                             <ReviewsList
                                 programs={programs}
                                 onReviewDelete={handleDeletedReview} 

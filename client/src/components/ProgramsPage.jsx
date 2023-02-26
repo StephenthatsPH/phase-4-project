@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProgramsList from "./ProgramsList";
 import NewProgramForm from "./NewProgramForm";
 
-function ProgramsPage({ programs, onAddProgram}){
+function ProgramsPage({ programs, onAddProgram, }){
     const [isNewProgram, setIsNewProgram] = useState(true);
 
     const handleToggleForm = () => {
