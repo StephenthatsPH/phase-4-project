@@ -3,6 +3,7 @@ import { Route, Switch, NavLink } from "react-router-dom";
 import Home from "./Home";
 import UserPrograms from "./UserPrograms";
 import ProgramsPage from "./ProgramsPage";
+import ReviewsList from "./ReviewsList";
 import UserSettings from "./UserAuth/UserSettings";
 
 function Header({ handleLogout, setUser }) {
@@ -40,41 +41,41 @@ function Header({ handleLogout, setUser }) {
         setPrograms(updatedPrograms)
     }
 
-    // function handleDeletedGame(deletedGame) {
-    //     const platform = platforms.find((platform) => platform.id == deletedGame.game.platform_id)
-    //     const updatedGames = platform.games.filter((g) => g.id !== deletedGame.game.id);
-    //     const updatedPlatform = { ...platform, games: updatedGames }
-    //     const updatedPlatforms = platforms.map((obj) => {
-    //         if (obj.id === platform.id) {
-    //             return updatedPlatform
-    //         }
-    //         else {
-    //             return obj
-    //         }
-    //     })
-    //     setPlatforms(updatedPlatforms);
-    // }
+    function handleDeletedReview(deletedReview) {
+        const program = programs.find((program) => program.id == deletedReview.review.program_id)
+        const updatedReviews = program.reviews.filter((r) => r.id !== deletedReview.review.id);
+        const updatedProgram = { ...program, reviews: updatedReviews }
+        const updatedPrograms = programs.map((obj) => {
+            if (obj.id === program.id) {
+                return updatedProgram
+            }
+            else {
+                return obj
+            }
+        })
+        setPrograms(updatedPrograms);
+    }
 
-    // function handleEditedGames(updatedGame) {
-    //     const platform = platforms.find((platform) => platform.id == updatedGame.platform_id)
-    //     const updatedGames = platform.games.map((game) => {
-    //         if (game.id === updatedGame.id) {
-    //             return updatedGame;
-    //         } else {
-    //             return game;
-    //         }
-    //     });
-    //     const updatedPlatform = { ...platform, games: updatedGames }
-    //     const updatedPlatforms = platforms.map((obj) => {
-    //         if (obj.id === platform.id) {
-    //             return updatedPlatform
-    //         }
-    //         else {
-    //             return obj
-    //         }
-    //     })
-    //     setPlatforms(updatedPlatforms);
-    // }
+    function handleEditedReview(updatedReview) {
+        const program = programs.find((program) => program.id == updatedReview.program_id)
+        const updatedReviews = program.reviews.map((review) => {
+            if (review.id === updatedReview.id) {
+                return updatedReview;
+            } else {
+                return review;
+            }
+        });
+        const updatedProgram = { ...program, reviews: updatedReviews }
+        const updatedPrograms = programs.map((obj) => {
+            if (obj.id === program.id) {
+                return updatedProgram
+            }
+            else {
+                return obj
+            }
+        })
+        setPrograms(updatedPrograms);
+    }
 
 
     function handleLogout() {
@@ -95,13 +96,20 @@ function Header({ handleLogout, setUser }) {
                     <button onClick={handleLogout}>Logout</button>
                     <Switch>
                         <Route exact path="/programs">
-                            <ProgramsPage onAddProgram={handleNewProgram}/>
+                            <ProgramsPage programs={programs} onAddProgram={handleNewProgram} onReviewDelete={handleDeletedReview} onReviewEdit={handleEditedReview} />
                         </Route>
                         <Route path="/user/programs">
                             <UserPrograms />
                         </Route>
                         <Route path="/user/account">
                             <UserSettings />
+                        </Route>
+                        <Route exact path="/programs/:id/overview">
+                            <ReviewsList
+                                programs={programs}
+                                onReviewDelete={handleDeletedReview} 
+                                onReviewEdit={handleEditedReview}
+                            />
                         </Route>
                         <Route exact path="/">
                             <Home />

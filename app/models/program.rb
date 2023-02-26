@@ -1,6 +1,6 @@
 class Program < ApplicationRecord
-    has_many :reviews, dependent: :destroy
-    has_many :users, through: :reviews, dependent: :destroy
+    has_many :reviews
+    has_many :users, through: :reviews
     
     validates :name, presence: true, uniqueness: true
     validates :hospital, presence: true

@@ -26,7 +26,7 @@ class ProgramsController < ApplicationController
     # PATCH /programs/:id
     def update 
         program = find_program
-        program.update!(program_params)
+        program.update(program_params)
         render json: program, except: [:created_at, :updated_at]
     end
 
