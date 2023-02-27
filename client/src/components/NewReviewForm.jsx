@@ -31,9 +31,8 @@ function NewReviewForm({ onReviewNew, currentUser }) {
 
     return (
         <div>
-            <h1>New Program</h1>
             <form onSubmit={handleSubmit}>
-                <label>Review: </label>
+                <label>Write Review: </label>
                 <select value={rating} onChange={(e) => setRating(e.target.value)}>
                     <option value="" disabled defaultValue hidden >
                         Select Overall Rating

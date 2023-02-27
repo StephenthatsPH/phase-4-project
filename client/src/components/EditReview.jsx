@@ -12,10 +12,8 @@ function EditReview({ id, text, rating, onReviewEdit }) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                review: {
                     rating: reviewRating,
                     text: reviewText
-                }
             }),
         })
             .then((res) => res.json())

@@ -32,9 +32,7 @@ function ReviewsList({ programs, onReviewDelete, onReviewEdit }) {
 
     return (
         <div>
-            <h1>
-                {selectedProgram.name}
-            </h1>
+            <h3>{selectedProgram.name} Reviews:</h3>
             <ul>
                 {getReviews}
             </ul>

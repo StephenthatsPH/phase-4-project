@@ -29,7 +29,7 @@ function ReviewCard({ id, text, rating, program_id, review, onReviewDelete, onRe
                 />
             ) : (
                 <div>
-                    <h2>Rating: {rating}</h2>
+                    <h3>Rating: {rating}</h3>
                     <p>{text}</p>
                     <p hidden>{program_id} </p>
                     <button onClick={() => setIsEditing((isEditing) => !isEditing)}>

@@ -91,30 +91,32 @@ function Header({ handleLogout, setUser, currentUser }) {
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/programs"> Programs</NavLink>
                     <NavLink to="/user/programs"> User's Programs</NavLink>
-                    <NavLink to="/user/account"> Account</NavLink>
+                    <NavLink to="/user/account"> Account </NavLink>
                     <button onClick={handleLogout}>Logout</button>
                     <Switch>
                         <Route exact path="/programs">
-                            <ProgramsPage 
-                                programs={programs} 
-                                onAddProgram={handleNewProgram} 
-                                onReviewDelete={handleDeletedReview} 
-                                onReviewEdit={handleEditedReview} 
-                                />
-                                {/* <NewReviewForm onReviewNew={handleReviewNew} /> */}
+                            <ProgramsPage
+                                programs={programs}
+                                onAddProgram={handleNewProgram}
+                                onReviewDelete={handleDeletedReview}
+                                onReviewEdit={handleEditedReview}
+                            />
                         </Route>
                         <Route path="/user/programs">
                             <UserPrograms />
                         </Route>
                         <Route path="/user/account">
-                            <UserSettings />
+                            <UserSettings currentUser={currentUser} />
                         </Route>
                         <Route exact path="/programs/:id/overview">
-                            <ProgramCard />
-                            <NewReviewForm onReviewNew={handleReviewNew} currentUser={currentUser} />
+                            <ProgramCard programs={programs} />
+                            <NewReviewForm
+                                onReviewNew={handleReviewNew}
+                                currentUser={currentUser}
+                            />
                             <ReviewsList
                                 programs={programs}
-                                onReviewDelete={handleDeletedReview} 
+                                onReviewDelete={handleDeletedReview}
                                 onReviewEdit={handleEditedReview}
                             />
                         </Route>
