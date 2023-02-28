@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-function EditUserInfo({ currentUser }) {
+function EditUserInfo({ currentUser, setCurrentUser }) {
     const [first_name, setFirst_Name] = useState(currentUser.first_name);
     const [last_name, setLast_Name] = useState(currentUser.last_name);
     const [phone_number, setPhone_Number] = useState(currentUser.phone_number);
@@ -28,6 +28,7 @@ function EditUserInfo({ currentUser }) {
         })
             .then((response) => {
                 console.log(response);
+                setCurrentUser({ first_name, last_name, phone_number, email });
             })
     }
 

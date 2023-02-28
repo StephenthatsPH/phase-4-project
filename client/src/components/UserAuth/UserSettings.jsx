@@ -4,7 +4,7 @@ import EditUserInfo from "./EditUserInfo";
 import UserPassword from "./UserPassword";
 import EditUserPassword from "./EditUserPassword";
 
-function UserSettings({ currentUser }){
+function UserSettings({ currentUser, setCurrentUser }){
     const [isChangeInfo, setIsChangeInfo] = useState(false);
     const [isChangePassword, setIsChangePassword] = useState(false);
 
@@ -21,7 +21,7 @@ function UserSettings({ currentUser }){
     return(
         <div>
             <hr/>
-            {isChangeInfo ? <EditUserInfo currentUser={currentUser}/> : <UserInfo currentUser={currentUser}/>}
+            {isChangeInfo ? <EditUserInfo currentUser={currentUser} setCurrentUser={setCurrentUser}/> : <UserInfo currentUser={currentUser}/>}
             <button onClick={handleToggleInfoForm}>
                 {isChangeInfo ? 'Cancel' : 'Update Info'}
             </button>

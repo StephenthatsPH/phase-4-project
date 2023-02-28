@@ -8,7 +8,7 @@ import NewReviewForm from "./NewReviewForm";
 import UserSettings from "./UserAuth/UserSettings";
 import ProgramCard from "./ProgramCard";
 
-function Header({ handleLogout, setUser, currentUser }) {
+function Header({ handleLogout, setUser, currentUser, setCurrentUser }) {
     const [programs, setPrograms] = useState([]);
     const [id, setId] = useState(currentUser.id);
 
@@ -107,7 +107,7 @@ function Header({ handleLogout, setUser, currentUser }) {
                             <UserPrograms />
                         </Route> */}
                         <Route path="/user/:id/account">
-                            <UserSettings currentUser={currentUser} />
+                            <UserSettings currentUser={currentUser} setCurrentUser={setCurrentUser} />
                         </Route>
                         <Route exact path="/programs/:id/overview">
                             <ProgramCard programs={programs} />

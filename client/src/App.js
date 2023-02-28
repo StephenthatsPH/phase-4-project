@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header setUser={setUser} currentUser={user} />
+        <Header setUser={setUser} currentUser={user} setCurrentUser={setUser}/>
       </div>
     </Router>
   );
