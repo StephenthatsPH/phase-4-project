@@ -1,28 +1,30 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom';
 
 function EditUserInfo({ currentUser }) {
     const [first_name, setFirst_Name] = useState(currentUser.first_name);
     const [last_name, setLast_Name] = useState(currentUser.last_name);
     const [phone_number, setPhone_Number] = useState(currentUser.phone_number);
     const [email, setEmail] = useState(currentUser.email);
-    const [id, setId] = useState(currentUser.id);
+    const { id } = useParams();
 
 
     function handleEditSubmit(e) {
         e.preventDefault();
         fetch(`/users/${id}`, {
             method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify({
                 user: {
+                    id: id,
                     first_name: first_name,
                     last_name: last_name,
                     phone_number: phone_number,
                     email: email
                 }
             }),
-            headers: {
-                "Content-Type": "application/json",
-            },
         })
             .then((response) => {
                 console.log(response);

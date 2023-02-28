@@ -19,31 +19,52 @@ class UsersController < ApplicationController
     end
 
     # PATCH /users/:id
-    def update 
-        user = User.find(session[:user_id])
-        user.update(update_params)
-        render json: user, except: [:created_at, :updated_at]
-    end
+    # def update
+    #     user = find_user
+    #     # user.update(update_params)
+    #     # user&.authenticate(params[:old_password])
+    #     if user.update(pword_params)
+    #         render json: user, except: [:created_at, :updated_at]
+    #     else user.update(update_params)
+    #         render json: user, except: [:created_at, :updated_at]
+    #     end
+    # end
 
-    # PATCH /users/:id
-    def update 
-        user = User.find(session[:user_id])
-        user.update(pword_params)
-        render json: user, except: [:created_at, :updated_at]
-    end
 
+    def update
+        user = find_user
+        if params[:password] && params[:password_confirmation]
+            # Update password
+            if user.update(password: params[:password], password_confirmation: params[:password_confirmation])
+                render json: { message: 'Password updated successfully' }
+            else
+                render json: { error: 'Failed to update password' }, status: :unprocessable_entity
+            end
+        else 
+            # Update user info
+            if user.update(update_params)
+                render json: { message: 'Profile updated successfully' }
+            else
+                render json: { error: 'Failed to update profile' }, status: :unprocessable_entity
+            end
+        end
+    end
     private
     
+    def find_user
+        User.find(params[:id])
+    end
+
     def user_params
         params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :password, :password_confirmation)
     end
 
     def update_params
-        params.require(:user).permit(:first_name, :last_name, :email, :phone_number)
+        params.require(:user).permit(:id, :first_name, :last_name, :email, :phone_number)
     end
 
     def pword_params
-        params.require(:user).permit(:password, :password_confirmation)
+        params.require(:user).permit(:id, :password, :password_confirmation)
     end
 
 end

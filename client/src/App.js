@@ -14,8 +14,9 @@ function App() {
       })
   }, []);
 
-  if (!user) return <AuthPage onLogin={setUser} />
-  
+  if (!user) {
+    return <AuthPage onLogin={setUser} />
+  } else {
   return (
     <Router>
       <div className="App">
@@ -23,6 +24,7 @@ function App() {
       </div>
     </Router>
   );
+  }
 }
 
 export default App;

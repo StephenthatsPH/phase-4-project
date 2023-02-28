@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function EditUserPassword({ currentUser }) {
-    const [oldPassword, setOldPassword] = useState('');
+    // const [oldPassword, setOldPassword] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirmation, setPassword_confirmation] = useState('');
     const [id, setId] = useState(currentUser.id);
@@ -12,11 +12,8 @@ function EditUserPassword({ currentUser }) {
         fetch(`/users/${id}`, {
             method: "PATCH",
             body: JSON.stringify({
-                user: {
-                    id: id,
                     password: password,
                     password_confirmation: password_confirmation
-                }
             }),
             headers: {
                 "Content-Type": "application/json",
@@ -33,11 +30,11 @@ function EditUserPassword({ currentUser }) {
                 <hr />
                 <h1>Edit User Info</h1>
                 <hr />
-                <label>
+                {/* <label>
                     Old Password:
                     <input type="password" name="old_password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
                 </label>
-                <br />
+                <br /> */}
                 <label>
                     New Password:
                     <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />

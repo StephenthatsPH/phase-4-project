@@ -10,6 +10,7 @@ import ProgramCard from "./ProgramCard";
 
 function Header({ handleLogout, setUser, currentUser }) {
     const [programs, setPrograms] = useState([]);
+    const [id, setId] = useState(currentUser.id);
 
     useEffect(() => {
         fetch('/programs')
@@ -90,8 +91,8 @@ function Header({ handleLogout, setUser, currentUser }) {
                     <h1>Rank List Builder</h1>
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/programs"> Programs</NavLink>
-                    <NavLink to="/user/programs"> User's Programs</NavLink>
-                    <NavLink to="/user/account"> Account </NavLink>
+                    {/* <NavLink to={`/user/${id}/programs`}> User's Programs</NavLink> */}
+                    <NavLink to={`/user/${id}/account`}> Account </NavLink>
                     <button onClick={handleLogout}>Logout</button>
                     <Switch>
                         <Route exact path="/programs">
@@ -102,10 +103,10 @@ function Header({ handleLogout, setUser, currentUser }) {
                                 onReviewEdit={handleEditedReview}
                             />
                         </Route>
-                        <Route path="/user/programs">
+                        {/* <Route path="/user/programs">
                             <UserPrograms />
-                        </Route>
-                        <Route path="/user/account">
+                        </Route> */}
+                        <Route path="/user/:id/account">
                             <UserSettings currentUser={currentUser} />
                         </Route>
                         <Route exact path="/programs/:id/overview">

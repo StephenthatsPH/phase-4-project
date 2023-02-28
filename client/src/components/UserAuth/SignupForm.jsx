@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function SignupForm() {
     const [first_name, setFirst_Name] = useState('');
@@ -7,6 +8,7 @@ function SignupForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirmation, setPassword_Confirmation] = useState('');
+    const history = useHistory();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -29,10 +31,12 @@ function SignupForm() {
         })
             .then((response) => {
                 console.log(response);
+                history.push('/login');
             })
             .catch((error) => {
                 console.error(error);
             });
+
     };
 
     return (
