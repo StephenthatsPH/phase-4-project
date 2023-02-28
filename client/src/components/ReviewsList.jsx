@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import ReviewCard from './ReviewCard';
 
-function ReviewsList({ programs, onReviewDelete, onReviewEdit }) {
+function ReviewsList({ programs, currentUser, onReviewDelete, onReviewEdit }) {
     const [selectedProgram, setSelectedProgram] = useState({
         name: "",
         reviews: []
@@ -23,9 +23,11 @@ function ReviewsList({ programs, onReviewDelete, onReviewEdit }) {
                 text={review.text}
                 rating={review.rating}
                 program_id={review.program_id}
+                user_id={review.user_id}
                 onReviewDelete={onReviewDelete}
                 onReviewEdit={onReviewEdit}
                 review={review}
+                currentUser={currentUser}
             />
         </div>
     })

@@ -117,6 +117,7 @@ function Header({ handleLogout, setUser, currentUser, setCurrentUser }) {
                             />
                             <ReviewsList
                                 programs={programs}
+                                currentUser={currentUser}
                                 onReviewDelete={handleDeletedReview}
                                 onReviewEdit={handleEditedReview}
                             />

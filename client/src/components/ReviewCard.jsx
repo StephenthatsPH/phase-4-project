@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import EditReview from "./EditReview"
 
-function ReviewCard({ id, text, rating, program_id, review, onReviewDelete, onReviewEdit }) {
+function ReviewCard({ id, text, rating, program_id, user_id, review, currentUser, onReviewDelete, onReviewEdit }) {
     const [isEditing, setIsEditing] = useState(false);
-    
-    let deletedReview = {review}
+    const [isOwner, setIsOwner] = useState();
+    const [currentUser_id, setCurrentUser_id] = useState(currentUser.id);
+
+    let deletedReview = { review }
 
     function handleDeleteReview(e) {
         fetch(`/reviews/${id}`, {
@@ -17,35 +19,48 @@ function ReviewCard({ id, text, rating, program_id, review, onReviewDelete, onRe
         setIsEditing(false);
         onReviewEdit(updatedReview);
     }
+    if (currentUser_id === user_id) {
+        return (
+            <li>
+                {isEditing ? (
+                    <EditReview
+                        user_id={user_id}
+                        id={id}
+                        text={text}
+                        rating={rating}
+                        onReviewEdit={handleUpdateReview}
+                    />
+                ) : (
+                    <div>
+                        <p hidden>{user_id}</p>
+                        <h3>Rating: {rating}</h3>
+                        <p>{text}</p>
+                        <p hidden>{program_id} </p>
+                        <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                            <span role="img" aria-label="edit">
+                                📝EDIT
+                            </span>
+                        </button>
+                        <button onClick={handleDeleteReview}>
+                            <span role="img" aria-label="delete">
+                                ❌DELETE
+                            </span>
+                        </button>
 
-    return (
-        <li>
-            {isEditing ? (
-                <EditReview
-                    id={id}
-                    text={text}
-                    rating={rating}
-                    onReviewEdit={handleUpdateReview}
-                />
-            ) : (
-                <div>
-                    <h3>Rating: {rating}</h3>
-                    <p>{text}</p>
-                    <p hidden>{program_id} </p>
-                    <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
-                        <span role="img" aria-label="edit">
-                            📝EDIT
-                        </span>
-                    </button>
-                    <button onClick={handleDeleteReview}>
-                        <span role="img" aria-label="delete">
-                            ❌DELETE
-                        </span>
-                    </button>
-                </div>
-            )}
-        </li>
-    )
+                    </div>
+                )}
+            </li>
+        )
+    } else {
+        return (
+            <div>
+                <p hidden>{user_id}</p>
+                <h3>Rating: {rating}</h3>
+                <p>{text}</p>
+                <p hidden>{program_id} </p>
+            </div>
+        )
+    }
 }
 
 export default ReviewCard
