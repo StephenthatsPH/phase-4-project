@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import UserInfo from "./UserInfo";
 import EditUserInfo from "./EditUserInfo";
+import UserPassword from "./UserPassword";
+import EditUserPassword from "./EditUserPassword";
 
 function UserSettings({ currentUser }){
-    const [isChange, setIsChange] = useState(false);
+    const [isChangeInfo, setIsChangeInfo] = useState(false);
+    const [isChangePassword, setIsChangePassword] = useState(false);
 
-    const handleToggleForm = () => {
-        setIsChange(!isChange);
+    const handleToggleInfoForm = () => {
+        setIsChangeInfo(!isChangeInfo);
+    };
+    
+    const handleTogglePasswordForm = () => {
+        setIsChangePassword(!isChangePassword);
     };
 
 
@@ -14,14 +21,16 @@ function UserSettings({ currentUser }){
     return(
         <div>
             <hr/>
-            {isChange ? <EditUserInfo currentUser={currentUser}/> : <UserInfo currentUser={currentUser}/>}
-            <button onClick={handleToggleForm}>
-                {isChange ? 'Cancel' : 'Update Info'}
+            {isChangeInfo ? <EditUserInfo currentUser={currentUser}/> : <UserInfo currentUser={currentUser}/>}
+            <button onClick={handleToggleInfoForm}>
+                {isChangeInfo ? 'Cancel' : 'Update Info'}
             </button>
             <br/>
             <hr/>
-            <p>Password: ***********</p>
-            <button>Change Password</button>
+            {isChangePassword ? <EditUserPassword currentUser={currentUser}/> : <UserPassword />}
+            <button onClick={handleTogglePasswordForm}>
+                {isChangePassword ? 'Cancel' : 'Update Password'}
+            </button>
         </div>
     )
 }

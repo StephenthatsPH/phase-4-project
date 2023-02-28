@@ -25,6 +25,13 @@ class UsersController < ApplicationController
         render json: user, except: [:created_at, :updated_at]
     end
 
+    # PATCH /users/:id
+    def update 
+        user = User.find(session[:user_id])
+        user.update(pword_params)
+        render json: user, except: [:created_at, :updated_at]
+    end
+
     private
     
     def user_params
@@ -33,6 +40,10 @@ class UsersController < ApplicationController
 
     def update_params
         params.require(:user).permit(:first_name, :last_name, :email, :phone_number)
+    end
+
+    def pword_params
+        params.require(:user).permit(:password, :password_confirmation)
     end
 
 end
