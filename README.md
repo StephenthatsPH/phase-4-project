@@ -1,28 +1,62 @@
-# README
+# Rank List Builder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+This project is a full stack web application built with a React frontend, PostgresSQL database, and a Ruby on Rails backend that allows users to view possible residency programs and leave reviews about their experience with the people, rotations, and programs overall. 
 
-* Ruby version
+## User Experience
 
-* System dependencies
+When users first get to the site they will be welcomed by the login/sign-up page. Once signed-up they will be able to login and be authenticated as being a member of the project. After logging in they will be able to browse through the list of programs and be able to select a program and view the list of details about the program and the reviews they have from other users. They will only be able to edit or delete their on reviews. They also will have access to updating their own account information and password.
 
-* Configuration
+## Setup And Deployment
 
-* Database creation
+**Requirements**
 
-* Database initialization
+- Ruby on Rails installed locally
+- NodeJS, and npm
 
-* How to run the test suite
+When you're ready to run this project, **_cd_** into the main directory and run:
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+npm install --prefix client
+bundle install
+rails db:create
+rails db:migrate
+```
 
-* Deployment instructions
 
-* ...
+## Deploying Locally
 
-npm start --prefix client
+Now that everything is set up, to deploy it's best to set up the backend first. You can do so by opening a terminal and running:
 
+```console
 rails s
+```
+
+This will run the backend server on [http://localhost:3000](http://localhost:3000)
+
+
+Leave that running, and open a new terminal. Then set up the frontend with the command:
+
+```console
+npm start --prefix client
+```
+
+This will run the frontend on [http://localhost:4000](http://localhost:4000) which you can see the _view_ in the browser.
+
+
+## Resources and Notes
+
+**Note:** to use SQLite instead of PostgreSQL:
+
+1. In the `Gemfile`, replace `gem 'pg', '~> 1.1'` with `gem 'sqlite3', '~> 1.4'`.
+
+2. In the `database.yml` file, change the line `adapter: postgresql` to `adapter: sqlite3`.
+
+- [Flatiron School](https://flatironschool.com/)
+
+**Future Stretch Goals:**
+
+    -To be added...
+
+###### StephenthatsPH, 2023
