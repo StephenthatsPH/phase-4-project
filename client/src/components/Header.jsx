@@ -8,7 +8,7 @@ import NewReviewForm from "./NewReviewForm";
 import UserSettings from "./UserAuth/UserSettings";
 import ProgramCard from "./ProgramCard";
 
-function Header({ handleLogout, setUser, currentUser, setCurrentUser }) {
+function Header({ onLogout, currentUser, setCurrentUser }) {
     const [programs, setPrograms] = useState([]);
     const [id, setId] = useState(currentUser.id);
 
@@ -77,13 +77,6 @@ function Header({ handleLogout, setUser, currentUser, setCurrentUser }) {
         setPrograms(updatedPrograms);
     }
 
-
-    function handleLogout() {
-        fetch('/logout', { method: 'DELETE', }).then((r) => {
-            if (r.ok) setUser(null);
-        });
-    }
-
     return (
         <>
             <header className="App-header">
@@ -93,7 +86,7 @@ function Header({ handleLogout, setUser, currentUser, setCurrentUser }) {
                     <NavLink to="/programs"> Programs</NavLink>
                     {/* <NavLink to={`/user/${id}/programs`}> User's Programs</NavLink> */}
                     <NavLink to={`/user/${id}/account`}> Account </NavLink>
-                    <button onClick={handleLogout}>Logout</button>
+                    <button onClick={onLogout}>Logout</button>
                     <Switch>
                         <Route exact path="/programs">
                             <ProgramsPage

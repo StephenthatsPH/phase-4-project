@@ -14,13 +14,19 @@ function App() {
       })
   }, []);
 
+  function handleLogout() {
+    fetch('/logout', { method: 'DELETE', }).then((r) => {
+        if (r.ok) setUser(null);
+    });
+}
+
   if (!user) {
     return <AuthPage onLogin={setUser} />
   } else {
   return (
     <Router>
       <div className="App">
-        <Header setUser={setUser} currentUser={user} setCurrentUser={setUser}/>
+        <Header onLogout={handleLogout} currentUser={user} setCurrentUser={setUser}/>
       </div>
     </Router>
   );
