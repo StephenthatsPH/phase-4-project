@@ -3,7 +3,6 @@ import EditReview from "./EditReview"
 
 function ReviewCard({ id, text, rating, program_id, user_id, review, currentUser, onReviewDelete, onReviewEdit }) {
     const [isEditing, setIsEditing] = useState(false);
-    const [isOwner, setIsOwner] = useState();
     const [currentUser_id, setCurrentUser_id] = useState(currentUser.id);
 
     let deletedReview = { review }

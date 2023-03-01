@@ -23,13 +23,13 @@ function UserSettings({ currentUser, setCurrentUser }){
             <hr/>
             {isChangeInfo ? <EditUserInfo currentUser={currentUser} setCurrentUser={setCurrentUser}/> : <UserInfo currentUser={currentUser}/>}
             <button onClick={handleToggleInfoForm}>
-                {isChangeInfo ? 'Cancel' : 'Update Info'}
+                {isChangeInfo ? 'Go back' : 'Update Info'}
             </button>
             <br/>
             <hr/>
             {isChangePassword ? <EditUserPassword currentUser={currentUser}/> : <UserPassword />}
             <button onClick={handleTogglePasswordForm}>
-                {isChangePassword ? 'Cancel' : 'Update Password'}
+                {isChangePassword ? 'Go back' : 'Update Password'}
             </button>
         </div>
     )
