@@ -37,7 +37,7 @@ class ProgramsController < ApplicationController
             program.destroy
             head :no_content
         else
-            render json: { error: 'Program not found' }, status: :not_found
+            render json: { errors: 'Program not found' }, status: :not_found
         end
     end
 

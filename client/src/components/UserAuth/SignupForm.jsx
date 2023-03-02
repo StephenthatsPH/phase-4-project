@@ -7,6 +7,7 @@ function SignupForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirmation, setPassword_Confirmation] = useState('');
+    const [errors, setErrors] = useState([]);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -26,13 +27,19 @@ function SignupForm() {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                <p>{error}</p>;
-            });
+        }).then((response) => {
+            if (response.ok) {
+                response.json().then((response) => console.log(response));
+            } else {
+                response.json().then((errorData) => setErrors(errorData.errors));
+            }
+        });
+            // .then((response) => {
+            //     console.log(response);
+            // })
+            // .catch((error) => {
+            //     <p>{error}</p>;
+            // });
 
     };
 
@@ -68,6 +75,13 @@ function SignupForm() {
                 <input required type="password" name="password_confirmation" value={password_confirmation} onChange={(e) => setPassword_Confirmation(e.target.value)} />
             </label>
             <br />
+            {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                    {errors.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            )}
             <button type="submit">Sign Up</button>
         </form>
     );
