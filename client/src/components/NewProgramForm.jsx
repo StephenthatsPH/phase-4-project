@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SpecialtySelect from './SpecialtySelect'
 
 function NewProgramForm({ onAddProgram }) {
     const [name, setName] = useState('')
@@ -65,7 +66,10 @@ function NewProgramForm({ onAddProgram }) {
                 <input type="number" placeholder="PGY1 Salary" value={pgy1salary} onChange={(e) => setPgy1salary(e.target.value)} />
                 <br />
                 <label>Specialty</label>
-                <input type="text" placeholder="Program Specialty" value={specialty} onChange={(e) => setSpecialty(e.target.value)} />
+                <select value={specialty} onChange={(e) => setSpecialty(e.target.value)}>
+                    <option value="" disabled defaultValue hidden >Select Specialty</option>
+                    <SpecialtySelect />
+                </select>
                 <br />
                 <label>Size</label>
                 <input type="number" placeholder="Program Size" value={program_size} onChange={(e) => setProgram_size(e.target.value)} />
