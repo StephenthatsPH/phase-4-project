@@ -30,19 +30,14 @@ function EditUserPassword({ currentUser }) {
                 <hr />
                 <h1>Edit User Info</h1>
                 <hr />
-                {/* <label>
-                    Old Password:
-                    <input type="password" name="old_password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
-                </label>
-                <br /> */}
                 <label>
                     New Password:
-                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Confirm New Password:
-                    <input type="password" name="password_confirmation" value={password_confirmation} onChange={(e) => setPassword_confirmation(e.target.value)} />
+                    <input required type="password" name="password_confirmation" value={password_confirmation} onChange={(e) => setPassword_confirmation(e.target.value)} />
                 </label>
                 <br />
                 <button type="submit" value="Submit" >Update</button>
