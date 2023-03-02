@@ -40,22 +40,22 @@ function EditUserInfo({ currentUser, setCurrentUser }) {
                 <hr />
                 <label>
                     First Name:
-                    <input type="text" name="first_name" value={first_name} onChange={(e) => setFirst_Name(e.target.value)} />
+                    <input required type="text" name="first_name" value={first_name} onChange={(e) => setFirst_Name(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Last Name:
-                    <input type="text" name="last_name" value={last_name} onChange={(e) => setLast_Name(e.target.value)} />
+                    <input required type="text" name="last_name" value={last_name} onChange={(e) => setLast_Name(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Phone #:
-                    <input type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
+                    <input required type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Email:
-                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 <button type="submit" value="Submit" >Update</button>
             </form>
