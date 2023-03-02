@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :created
         else
+            byebug
             render json: { errors: ["Invalid email or password"] }, status: :unauthorized
         end  
         
@@ -14,6 +15,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete :user_id
-        render json: { message: 'Logged out' }, status: :ok
+        render json: { message: ['Logged out'] }, status: :ok
     end
 end

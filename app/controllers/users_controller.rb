@@ -14,21 +14,9 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             render json:  user, status: :created
         else
-            render json: { errors: [user.errors.full_messages.to_sentence] }, status: :unprocessable_entity
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
     end
-
-    # PATCH /users/:id
-    # def update
-    #     user = find_user
-    #     # user.update(update_params)
-    #     # user&.authenticate(params[:old_password])
-    #     if user.update(pword_params)
-    #         render json: user, except: [:created_at, :updated_at]
-    #     else user.update(update_params)
-    #         render json: user, except: [:created_at, :updated_at]
-    #     end
-    # end
 
 
     def update

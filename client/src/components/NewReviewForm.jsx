@@ -45,6 +45,7 @@ function NewReviewForm({ onReviewNew, currentUser }) {
                 </select>
                 <br />
                 <textarea
+                    required
                     cols="65"
                     rows="6"
                     value={text}

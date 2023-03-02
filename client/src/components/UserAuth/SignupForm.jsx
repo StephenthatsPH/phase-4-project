@@ -47,32 +47,32 @@ function SignupForm() {
         <form onSubmit={handleSubmit}>
             <label>
                 First Name:
-                <input required type="text" name="first_name" value={first_name} onChange={(e) => setFirst_Name(e.target.value)} />
+                <input type="text" name="first_name" value={first_name} onChange={(e) => setFirst_Name(e.target.value)} />
             </label>
             <br />
             <label>
                 Last Name:
-                <input required type="text" name="last_name" value={last_name} onChange={(e) => setLast_Name(e.target.value)} />
+                <input type="text" name="last_name" value={last_name} onChange={(e) => setLast_Name(e.target.value)} />
             </label>
             <br />
             <label>
                 Phone #:
-                <input required type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
+                <input type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
             </label>
             <br />
             <label>
                 Email:
-                <input required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
             <br />
             <label>
                 Password:
-                <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </label>
             <br />
             <label>
                 Confirm Password:
-                <input required type="password" name="password_confirmation" value={password_confirmation} onChange={(e) => setPassword_Confirmation(e.target.value)} />
+                <input type="password" name="password_confirmation" value={password_confirmation} onChange={(e) => setPassword_Confirmation(e.target.value)} />
             </label>
             <br />
             {errors.length > 0 && (
