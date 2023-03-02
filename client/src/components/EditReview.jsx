@@ -12,8 +12,8 @@ function EditReview({ id, text, rating, onReviewEdit }) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                    rating: reviewRating,
-                    text: reviewText
+                rating: reviewRating,
+                text: reviewText
             }),
         })
             .then((res) => res.json())
@@ -21,19 +21,24 @@ function EditReview({ id, text, rating, onReviewEdit }) {
     }
     return (
         <form onSubmit={handleEditSubmit}>
-            <input
-                type="text"
-                placeholder="Enter your review"
-                autoComplete="off"
+            <label>Editing Review:</label>
+            <select value={reviewRating} onChange={(e) => setReviewRating(e.target.value)}>
+                <option value="" disabled defaultValue hidden >
+                    Select Overall Rating
+                </option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+            </select>
+            <br />
+            <textarea
+                required
+                cols="65"
+                rows="6"
                 value={reviewText}
                 onChange={(e) => setReviewText(e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder="Publisher"
-                autoComplete="off"
-                value={reviewRating}
-                onChange={(e) => setReviewRating(e.target.value)}
             />
             <button>
                 <input

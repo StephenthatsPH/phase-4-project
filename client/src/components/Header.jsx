@@ -81,7 +81,7 @@ function Header({ onLogout, currentUser, setCurrentUser }) {
         <>
             <header className="App-header">
                 <nav className="navbar">
-                    <h1>Rank List Builder</h1>
+                    <h1>Program Reviewer</h1>
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/programs"> Programs</NavLink>
                     {/* <NavLink to={`/user/${id}/programs`}> User's Programs</NavLink> */}

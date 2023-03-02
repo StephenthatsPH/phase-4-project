@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            byebug
             render json: { errors: ["Invalid email or password"] }, status: :unauthorized
         end  
         
