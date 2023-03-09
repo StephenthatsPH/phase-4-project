@@ -1,6 +1,17 @@
 class ReviewsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
+    skip_before_action :authorized, only: :user_programs
+
+    def user_programs
+        if params[:user_id]
+            user = find_user
+            programs = user.programs
+        else
+            render json: { errors: 'Programs not found' }, status: :not_found
+        end
+        render json: programs, include: [:programs]
+    end
 
     # GET /reviews
     def index 
@@ -40,6 +51,9 @@ class ReviewsController < ApplicationController
         Review.find(params[:id])
     end
 
+    def find_user
+        User.find(params[:user_id])
+    end
 
     # Strong params (permit only these attributes) for mass assignment protection
     def review_params

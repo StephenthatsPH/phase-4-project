@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/me', to: 'users#show'
   patch '/users/:id', to: 'users#update'
-  resources :programs
-  resources :reviews
-  
+  get 'user/:user_id/programs', to: 'reviews#user_programs'
+
+  resources :programs, only: [:show, :index, :create]
+  resources :reviews, only: [:show, :index, :create, :destroy, :update]
+
   get '*path',to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
 
