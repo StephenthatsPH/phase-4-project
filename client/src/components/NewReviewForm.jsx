@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 function NewReviewForm({ onReviewNew, currentUser }) {
     const [rating, setRating] = useState('')
     const [text, setText] = useState('')
+    const [errors, setErrors] = useState([]);
     const { id } = useParams()
     const [user_id, setUser_id] = useState(currentUser.id)
 
@@ -21,16 +22,29 @@ function NewReviewForm({ onReviewNew, currentUser }) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-            .then(res => res.json())
-            .then(newReview => onReviewNew(newReview))
+        }).then((response) => {
+            if (response.ok) {
+                response.json().then((newReview) => onReviewNew(newReview));
+            } else {
+                response.json().then((errorData) => setErrors(errorData.errors));
+            }
+        });
+        // .then(res => res.json())
+        // .then(newReview => onReviewNew(newReview))
         console.log('new review added')
         setRating('')
         setText('')
     };
-
+    
     return (
         <div>
+                {errors.length > 0 && (
+                    <ul style={{ color: "red" }}>
+                        {errors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                    )}
             <form onSubmit={handleSubmit}>
                 <label>Write Review: </label>
                 <select value={rating} onChange={(e) => setRating(e.target.value)}>
