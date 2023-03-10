@@ -12,6 +12,7 @@ function NewProgramForm({ onAddProgram }) {
     const [state, setState] = useState('')
     const [city, setCity] = useState('')
     const [area_type, setArea_type] = useState('')
+    const [errors, setErrors] = useState([]);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -33,9 +34,15 @@ function NewProgramForm({ onAddProgram }) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-            .then(res => res.json())
-            .then(newProgram => onAddProgram(newProgram))
+        }).then((response) => {
+            if (response.ok) {
+                response.json().then((newProgram) => onAddProgram(newProgram));
+            } else {
+                response.json().then((errorData) => setErrors(errorData.errors));
+            }
+        });
+        // .then(res => res.json())
+        // .then(newProgram => onAddProgram(newProgram))
         console.log('new program added')
         setName('')
         setHospital('')
@@ -53,6 +60,13 @@ function NewProgramForm({ onAddProgram }) {
         <div>
             <h1>New Program</h1>
             <form onSubmit={handleSubmit}>
+            {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                    {errors.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            )}
                 <label>Name</label>
                 <input type="text" placeholder="Program Name" value={name} onChange={(e) => setName(e.target.value)} />
                 <br />

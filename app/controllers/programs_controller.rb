@@ -9,8 +9,12 @@ class ProgramsController < ApplicationController
 
     # POST /programs
     def create 
-        program = Program.create!(program_params)
-        render json: program, status: :created
+        program = Program.new(program_params)
+        if program.save
+            render json: program, status: :created
+        else
+            render json: { errors: program.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     # GET /programs/:id shows specific program
