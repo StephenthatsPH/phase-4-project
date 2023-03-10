@@ -6,7 +6,7 @@ This project is a full stack web application built with a React frontend, Postgr
 
 ## User Experience
 
-When users first get to the site they will be welcomed by the login/sign-up page. Once signed-up they will be able to login and be authenticated as being a member of the project. After logging in they will be able to browse through the list of programs and be able to select a program and view the list of details about the program and the reviews they have from other users. They will only be able to edit or delete their own reviews. They also will have access to updating their own account information and password.
+When users first get to the site they will be welcomed by the login/sign-up page. Once they are done with logging-in or signing up and authenticated as being a member of the project. They will be able to browse through the list of programs and be able to select a program and the list of details about the program and the reviews they have from other users or create their own. They will only be able to edit or delete their own reviews. They also will have access to updating their own account information, password included.
 
 ## Setup And Deployment
 

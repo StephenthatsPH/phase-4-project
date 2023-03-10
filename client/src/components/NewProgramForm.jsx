@@ -77,7 +77,7 @@ function NewProgramForm({ onAddProgram }) {
                 <input type="text" placeholder="Program website" value={website} onChange={(e) => setWebsite(e.target.value)} />
                 <br />
                 <label>PGY1 Salary</label>
-                <input type="number" placeholder="PGY1 Salary" value={pgy1salary} onChange={(e) => setPgy1salary(e.target.value)} />
+                <input type="number" min="0" placeholder="PGY1 Salary" value={pgy1salary} onChange={(e) => setPgy1salary(e.target.value)} />
                 <br />
                 <label>Specialty</label>
                 <select value={specialty} onChange={(e) => setSpecialty(e.target.value)}>
@@ -86,10 +86,10 @@ function NewProgramForm({ onAddProgram }) {
                 </select>
                 <br />
                 <label>Size</label>
-                <input type="number" placeholder="Program Size" value={program_size} onChange={(e) => setProgram_size(e.target.value)} />
+                <input type="number" min="0" placeholder="Program Size" value={program_size} onChange={(e) => setProgram_size(e.target.value)} />
                 <br />
                 <label>Age</label>
-                <input type="number" placeholder="Program Age" value={program_age} onChange={(e) => setProgram_age(e.target.value)} />
+                <input type="number" min="0" placeholder="Program Age" value={program_age} onChange={(e) => setProgram_age(e.target.value)} />
                 <br />
                 <br />
                 <label>Area Details</label>
