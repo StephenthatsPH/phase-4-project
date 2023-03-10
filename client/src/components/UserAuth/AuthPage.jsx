@@ -11,7 +11,7 @@ function AuthPage({ onLogin }) {
 
     return (
         <div>
-            {isSignup ? <SignupForm /> : <LoginForm onLogin={onLogin}/>}
+            {isSignup ? <SignupForm onLogin={onLogin} /> : <LoginForm onLogin={onLogin}/>}
             <button onClick={handleToggleForm}>
                 {isSignup ? 'Already have an account? Log in' : 'Need to create an account? Sign up'}
             </button>

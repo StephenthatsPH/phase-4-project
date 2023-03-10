@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function SignupForm() {
+function SignupForm({ onLogin }) {
     const [first_name, setFirst_Name] = useState('');
     const [last_name, setLast_Name] = useState('');
     const [phone_number, setPhone_Number] = useState('');
@@ -29,18 +29,11 @@ function SignupForm() {
             }
         }).then((response) => {
             if (response.ok) {
-                response.json().then((response) => console.log(response));
+                response.json().then((user) => onLogin(user));
             } else {
                 response.json().then((errorData) => setErrors(errorData.errors));
             }
         });
-            // .then((response) => {
-            //     console.log(response);
-            // })
-            // .catch((error) => {
-            //     <p>{error}</p>;
-            // });
-
     };
 
     return (

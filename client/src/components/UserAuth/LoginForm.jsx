@@ -21,8 +21,6 @@ function LoginForm({ onLogin }) {
                 response.json().then((errorData) => setErrors(errorData.errors));
             }
         });
-        // .then(user => user.json())
-        // .then((user) => onLogin(user))
     }
 
     return (
