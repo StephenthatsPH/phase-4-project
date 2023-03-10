@@ -79,14 +79,14 @@ function Header({ onLogout, currentUser, setCurrentUser }) {
 
     return (
         <>
-            <header className="App-header">
-                <nav className="navbar">
+            <div className="nav">
+                <nav className="nav-items">
                     <h1>Program Reviewer</h1>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/programs"> Programs</NavLink>
+                    <NavLink to="/" className='nav-item'>Home</NavLink>
+                    <NavLink to="/programs" className='nav-item'> Programs</NavLink>
                     {/* <NavLink to={`/user/${id}/programs`}> User's Programs</NavLink> */}
-                    <NavLink to={`/user/${id}/account`}> Account </NavLink>
-                    <button onClick={onLogout}>Logout</button>
+                    <NavLink to={`/user/${id}/account`} className='nav-item'> Account </NavLink>
+                    <button onClick={onLogout} >Logout</button>
                     <Switch>
                         <Route exact path="/programs">
                             <ProgramsPage
@@ -120,7 +120,7 @@ function Header({ onLogout, currentUser, setCurrentUser }) {
                         </Route>
                     </Switch>
                 </nav>
-            </header>
+            </div>
         </>
     )
 }
