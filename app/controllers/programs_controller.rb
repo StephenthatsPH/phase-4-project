@@ -9,7 +9,7 @@ class ProgramsController < ApplicationController
 
     # POST /programs
     def create 
-        program = Program.create(program_params)
+        program = Program.create!(program_params)
         render json: program, status: :created
     end
 
