@@ -26,14 +26,14 @@ class UsersController < ApplicationController
             if user.update(password: params[:password], password_confirmation: params[:password_confirmation])
                 render json: { message: 'Password updated successfully' }
             else
-                render json: { error: 'Failed to update password' }, status: :unprocessable_entity
+                render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
             end
         else 
             # Update user info
             if user.update(update_params)
                 render json: { message: 'Profile updated successfully' }
             else
-                render json: { error: 'Failed to update profile' }, status: :unprocessable_entity
+                render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
             end
         end
     end

@@ -6,6 +6,7 @@ function EditUserInfo({ currentUser, setCurrentUser }) {
     const [last_name, setLast_Name] = useState(currentUser.last_name);
     const [phone_number, setPhone_Number] = useState(currentUser.phone_number);
     const [email, setEmail] = useState(currentUser.email);
+    const [errors, setErrors] = useState([]);
     const { id } = useParams();
 
 
@@ -25,11 +26,14 @@ function EditUserInfo({ currentUser, setCurrentUser }) {
                     email: email
                 }
             }),
-        })
-            .then((response) => {
-                console.log(response);
-                setCurrentUser({ first_name, last_name, phone_number, email });
-            })
+        }).then((response) => {
+            if (response.ok) {
+                response.json().then((user) => console.log(user));
+            } else {
+                response.json().then((errorData) => setErrors(errorData.errors));
+            }
+        });
+        setCurrentUser({ first_name, last_name, phone_number, email })
     }
 
     return (
@@ -40,23 +44,30 @@ function EditUserInfo({ currentUser, setCurrentUser }) {
                 <hr />
                 <label>
                     First Name:
-                    <input required type="text" name="first_name" value={first_name} onChange={(e) => setFirst_Name(e.target.value)} />
+                    <input type="text" name="first_name" value={first_name} onChange={(e) => setFirst_Name(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Last Name:
-                    <input required type="text" name="last_name" value={last_name} onChange={(e) => setLast_Name(e.target.value)} />
+                    <input type="text" name="last_name" value={last_name} onChange={(e) => setLast_Name(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Phone #:
-                    <input required type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
+                    <input type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Email:
-                    <input required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
+                {errors.length > 0 && (
+                    <ul style={{ color: "red" }}>
+                        {errors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
                 <button type="submit" value="Submit" >Update</button>
             </form>
         </div>
