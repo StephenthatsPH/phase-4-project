@@ -10,15 +10,20 @@ function NewReviewForm({ onReviewNew, currentUser }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const review = {
-            rating: rating,
-            text: text,
-            program_id: id,
-            user_id: user_id
-        }
+        // const review = {
+        //     rating: rating,
+        //     text: text,
+        //     program_id: id,
+        //     user_id: user_id
+        // }
         fetch('/reviews', {
             method: 'POST',
-            body: JSON.stringify(review),
+            body: JSON.stringify({
+                rating: rating,
+                text: text,
+                program_id: id,
+                user_id: user_id
+            }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -35,16 +40,16 @@ function NewReviewForm({ onReviewNew, currentUser }) {
         setRating('')
         setText('')
     };
-    
+
     return (
         <div>
-                {errors.length > 0 && (
-                    <ul style={{ color: "red" }}>
-                        {errors.map((error) => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                    )}
+            {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                    {errors.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            )}
             <form onSubmit={handleSubmit}>
                 <label>Write Review: </label>
                 <select value={rating} onChange={(e) => setRating(e.target.value)}>
