@@ -44,11 +44,11 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :password, :password_confirmation)
+        params.require(:user).permit(:first_name, :last_name, :email, :medyear, :password, :password_confirmation)
     end
 
     def update_params
-        params.require(:user).permit(:id, :first_name, :last_name, :email, :phone_number)
+        params.require(:user).permit(:id, :first_name, :last_name, :email, :medyear)
     end
 
     def pword_params

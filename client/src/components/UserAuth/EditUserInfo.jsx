@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
+import MedyearSelect from './MedyearSelect';
 
 function EditUserInfo({ currentUser, setCurrentUser }) {
     const [first_name, setFirst_Name] = useState(currentUser.first_name);
     const [last_name, setLast_Name] = useState(currentUser.last_name);
-    const [phone_number, setPhone_Number] = useState(currentUser.phone_number);
+    const [medyear, setMedyear] = useState(currentUser.medyear);
     const [email, setEmail] = useState(currentUser.email);
     const [errors, setErrors] = useState([]);
     const { id } = useParams();
@@ -22,7 +23,7 @@ function EditUserInfo({ currentUser, setCurrentUser }) {
                     id: id,
                     first_name: first_name,
                     last_name: last_name,
-                    phone_number: phone_number,
+                    medyear: medyear,
                     email: email
                 }
             }),
@@ -33,7 +34,7 @@ function EditUserInfo({ currentUser, setCurrentUser }) {
                 response.json().then((errorData) => setErrors(errorData.errors));
             }
         });
-        setCurrentUser({ first_name, last_name, phone_number, email })
+        setCurrentUser({ first_name, last_name, medyear, email })
     }
 
     return (
@@ -53,8 +54,11 @@ function EditUserInfo({ currentUser, setCurrentUser }) {
                 </label>
                 <br />
                 <label>
-                    Phone #:
-                    <input type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
+                    Med School Year:
+                    <select value={medyear} onChange={(e) => setMedyear(e.target.value)} >
+                        <option value="" disabled defaultValue hidden >Select Year</option>
+                        <MedyearSelect />
+                    </select>
                 </label>
                 <br />
                 <label>

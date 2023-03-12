@@ -6,8 +6,8 @@ function UserInfo({ currentUser }) {
             <h1>User Settings</h1>
             <hr/>
             <p>Name: {currentUser.first_name} {currentUser.last_name}</p>
+            <p>Med School Year: {currentUser.medyear}</p>
             <p>E-mail: {currentUser.email}</p>
-            <p>Phone #: {currentUser.phone_number}</p>
         </div>
     )
 }

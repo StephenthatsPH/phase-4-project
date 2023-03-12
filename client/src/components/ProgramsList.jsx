@@ -17,7 +17,7 @@ function ProgramsList({ programs }) {
 
     return (
         <div>
-            <h2>Current Program List:</h2>
+            <h2>Residency Programs:</h2>
             {getPrograms}
         </div>
     );

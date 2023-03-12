@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import MedyearSelect from './MedyearSelect';
 
 function SignupForm({ onLogin }) {
     const [first_name, setFirst_Name] = useState('');
     const [last_name, setLast_Name] = useState('');
-    const [phone_number, setPhone_Number] = useState('');
+    const [medyear, setMedyear] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirmation, setPassword_Confirmation] = useState('');
@@ -15,7 +16,7 @@ function SignupForm({ onLogin }) {
             user: {
                 first_name: first_name,
                 last_name: last_name,
-                phone_number: phone_number,
+                medyear: medyear,
                 email: email,
                 password: password,
                 password_confirmation: password_confirmation
@@ -35,7 +36,7 @@ function SignupForm({ onLogin }) {
             }
         });
     };
-    
+
     return (
         <div>
             <h1>Residency Reviewer</h1>
@@ -52,12 +53,15 @@ function SignupForm({ onLogin }) {
                 </label>
                 <br />
                 <label>
-                    Phone #:
-                    <input type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
+                    Med School Year:
+                    <select value={medyear} onChange={(e) => setMedyear(e.target.value)} >
+                        <option value="" disabled defaultValue hidden >Select Year</option>
+                        <MedyearSelect />
+                    </select>
                 </label>
                 <br />
                 <label>
-                    Email:
+                    E-mail:
                     <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 <br />
