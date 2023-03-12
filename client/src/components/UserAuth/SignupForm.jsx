@@ -35,48 +35,53 @@ function SignupForm({ onLogin }) {
             }
         });
     };
-
+    
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                First Name:
-                <input type="text" name="first_name" value={first_name} onChange={(e) => setFirst_Name(e.target.value)} />
-            </label>
-            <br />
-            <label>
-                Last Name:
-                <input type="text" name="last_name" value={last_name} onChange={(e) => setLast_Name(e.target.value)} />
-            </label>
-            <br />
-            <label>
-                Phone #:
-                <input type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
-            </label>
-            <br />
-            <label>
-                Email:
-                <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </label>
-            <br />
-            <label>
-                Password:
-                <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </label>
-            <br />
-            <label>
-                Confirm Password:
-                <input type="password" name="password_confirmation" value={password_confirmation} onChange={(e) => setPassword_Confirmation(e.target.value)} />
-            </label>
-            <br />
-            {errors.length > 0 && (
-                <ul style={{ color: "red" }}>
-                    {errors.map((error) => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-            )}
-            <button type="submit">Sign Up</button>
-        </form>
+        <div>
+            <h1>Residency Reviewer</h1>
+            <h2>Sign Up Now!</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    First Name:
+                    <input type="text" name="first_name" value={first_name} onChange={(e) => setFirst_Name(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Last Name:
+                    <input type="text" name="last_name" value={last_name} onChange={(e) => setLast_Name(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Phone #:
+                    <input type="text" name="phone_number" value={phone_number} onChange={(e) => setPhone_Number(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Email:
+                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Password:
+                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Confirm Password:
+                    <input type="password" name="password_confirmation" value={password_confirmation} onChange={(e) => setPassword_Confirmation(e.target.value)} />
+                </label>
+                <br />
+                {errors.length > 0 && (
+                    <ul style={{ color: "red" }}>
+                        {errors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Residency Reviewer is a place for medical students to anonymously review residency training programs. With this user-driven experience, students can sign up, sign in, and look through training programs with anonymity so they can talk about the things that really matter to them. </p>
+        </div>
     );
 }
 

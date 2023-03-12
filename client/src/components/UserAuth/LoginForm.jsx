@@ -24,26 +24,30 @@ function LoginForm({ onLogin }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Email:
-                <input required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </label>
-            <br />
-            <label>
-                Password:
-                <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </label>
-            <br />
-            {errors.length > 0 && (
-                <ul style={{ color: "red" }}>
-                    {errors.map((error) => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-            )}
-            <button type="submit">Log In</button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <h1>Residency Reviewer</h1>
+                <h2>Welcome Back</h2>
+                <label>
+                    Email:
+                    <input required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Password:
+                    <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </label>
+                <br />
+                {errors.length > 0 && (
+                    <ul style={{ color: "red" }}>
+                        {errors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
+                <button type="submit">Log In</button>
+            </form>
+        </div>
     );
 }
 

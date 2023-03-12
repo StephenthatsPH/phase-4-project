@@ -1,3 +1,4 @@
+import './App.css';
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Header";
@@ -7,29 +8,35 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-      fetch('/me').then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUser(user));
-        }
-      })
+    fetch('/me').then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    })
   }, []);
 
   function handleLogout() {
     fetch('/logout', { method: 'DELETE', }).then((r) => {
-        if (r.ok) setUser(null);
+      if (r.ok) setUser(null);
     });
-}
+  }
 
   if (!user) {
-    return <AuthPage onLogin={setUser} />
+    return (
+      <Router>
+        <div>
+          <AuthPage onLogin={setUser} />
+        </div>
+      </Router>
+    )
   } else {
-  return (
-    <Router>
-      <div className="App">
-        <Header onLogout={handleLogout} currentUser={user} setCurrentUser={setUser}/>
-      </div>
-    </Router>
-  );
+    return (
+      <Router>
+        <div className="App">
+          <Header onLogout={handleLogout} currentUser={user} setCurrentUser={setUser} />
+        </div>
+      </Router>
+    );
   }
 }
 

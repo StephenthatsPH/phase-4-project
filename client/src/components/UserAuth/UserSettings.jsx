@@ -20,7 +20,6 @@ function UserSettings({ currentUser, setCurrentUser }){
 
     return(
         <div>
-            <hr/>
             {isChangeInfo ? <EditUserInfo currentUser={currentUser} setCurrentUser={setCurrentUser}/> : <UserInfo currentUser={currentUser}/>}
             <button onClick={handleToggleInfoForm}>
                 {isChangeInfo ? 'Go back' : 'Update Info'}
