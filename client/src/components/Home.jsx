@@ -5,7 +5,7 @@ function Home() {
         <div>
             <h1>Home</h1>
             <p>Below is just filler.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi animi fuga omnis dolor vel magnam veritatis quia, ex eaque pariatur, cum voluptate distinctio quas, odit explicabo ratione! Eaque, consequuntur dolores!</p>
+            <p>Overall, this project is meant to be a web application that allows medical students to sign up, sign in and look through teaching programs. So that they can basically apply to them for residency training. It lets them view teaching programs with their attributes populated by data that has been submitted, and then they can also read and write anonymous reviews for those programs for others to see.</p>
         </div>
     )
 }
