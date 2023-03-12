@@ -30,11 +30,11 @@ function EditUserInfo({ currentUser, setCurrentUser }) {
         }).then((response) => {
             if (response.ok) {
                 response.json().then((user) => console.log(user));
+                setCurrentUser({ first_name, last_name, medyear, email })
             } else {
                 response.json().then((errorData) => setErrors(errorData.errors));
             }
         });
-        setCurrentUser({ first_name, last_name, medyear, email })
     }
 
     return (
