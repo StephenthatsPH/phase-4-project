@@ -85,7 +85,7 @@ function Header({ onLogout, currentUser, setCurrentUser }) {
                     <NavLink to="/" className='nav-item'>| Home |</NavLink>
                     <NavLink to="/programs" className='nav-item'>| Programs |</NavLink>
                     {/* <NavLink to={`/user/${id}/programs`}> User's Programs</NavLink> */}
-                    <NavLink to={`/user/${id}/account`} className='nav-item'>| Account |</NavLink>
+                    <NavLink to={`/account`} className='nav-item'>| Account |</NavLink>
                     <button onClick={onLogout} > Logout </button>
                 <hr/>
 
@@ -101,7 +101,7 @@ function Header({ onLogout, currentUser, setCurrentUser }) {
                         {/* <Route path="/user/programs">
                             <UserPrograms />
                         </Route> */}
-                        <Route path="/user/:id/account">
+                        <Route path="/account">
                             <UserSettings currentUser={currentUser} setCurrentUser={setCurrentUser} />
                         </Route>
                         <Route exact path="/programs/:id/overview">

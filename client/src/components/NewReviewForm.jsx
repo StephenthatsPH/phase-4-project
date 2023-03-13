@@ -21,8 +21,7 @@ function NewReviewForm({ onReviewNew, currentUser }) {
             body: JSON.stringify({
                 rating: rating,
                 text: text,
-                program_id: id,
-                user_id: user_id
+                program_id: id
             }),
             headers: {
                 'Content-Type': 'application/json'
