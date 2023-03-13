@@ -1,11 +1,6 @@
 class ProgramsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-    def popular_programs
-        programs = Program.review
-        render json: programs
-    end
-
     # GET /programs
     def index 
         programs = Program.all
