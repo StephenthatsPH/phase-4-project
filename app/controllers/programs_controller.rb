@@ -1,6 +1,20 @@
 class ProgramsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
+    # GET /topprograms
+    def topprograms
+        @top = []
+        programs = Program.all
+        bestprograms = programs.map do |p|
+            p.reviews.select do |r|
+                if r[:rating] >= 4
+                    @top << p
+                end
+            end
+        end
+        render json: @top.uniq
+    end
+
     # GET /programs
     def index 
         programs = Program.all

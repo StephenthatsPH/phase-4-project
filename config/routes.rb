@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/me', to: 'users#show'
   patch '/users/:id', to: 'users#update'
-  get 'highest_rating/', to: 'programs#highest_rating'
+  get 'topprograms/', to: 'programs#topprograms'
 
   resources :programs, only: [:show, :index, :create]
   resources :reviews, only: [:show, :index, :create, :destroy, :update]

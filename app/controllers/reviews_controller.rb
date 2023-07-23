@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
 
     # skip_before_action :authorized, only: :user_programs
 
-
     # GET /reviews
     def index 
         reviews = Review.all
